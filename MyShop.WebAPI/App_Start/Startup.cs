@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Http;
+using MyShop.Data.Respositories;
 
 [assembly: OwinStartup(typeof(MyShop.WebAPI.App_Start.Startup))]
 
@@ -48,9 +49,14 @@ namespace MyShop.WebAPI.App_Start
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
+            builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces().InstancePerRequest();
+
             builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
-                .AsImplementedInterfaces().InstancePerRequest();
+                .AsImplementedInterfaces()
+                .InstancePerRequest();
 
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

@@ -265,6 +265,7 @@
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Core\ServiceFactory.cs" />
     <Compile Include="Infrastructure\Extentions\EntityExtentions.cs" />
+    <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\System\ApplicationRoleViewModel.cs" />
     <Compile Include="Models\System\ApplicationUserViewModel.cs" />
     <Compile Include="Models\System\FunctionViewModel.cs" />
@@ -308,6 +309,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Content Include="ConnectionStrings.config" />
+    <Content Include="AppSettings.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
