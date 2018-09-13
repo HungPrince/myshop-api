@@ -21,7 +21,7 @@ namespace MyShop.Data.Infrastructure
 
         protected MyShopDbContext DbContext
         {
-            get { return dataContext ?? (new MyShopDbContext()); }
+            get { return dataContext ?? (dataContext = new MyShopDbContext()); }
         }
 
         #endregion Properties

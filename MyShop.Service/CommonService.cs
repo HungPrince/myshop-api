@@ -42,7 +42,7 @@ namespace MyShop.Service
 
         public SystemConfig GetSystemConfig(string code)
         {
-            return _systemConfigRepository.(x => x.Code == code);
+            return _systemConfigRepository.GetSingleByCondition(x => x.Code == code);
         }
     }
 }

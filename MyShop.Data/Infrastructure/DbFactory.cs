@@ -6,7 +6,7 @@
 
         public MyShopDbContext Init()
         {
-            return dbContext ?? (new MyShopDbContext());
+            return dbContext ?? (dbContext = new MyShopDbContext());
         }
 
         protected override void DisposeCore()

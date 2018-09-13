@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201808261050525_update_table_feedbacks.Designer.cs">
       <DependentUpon>201808261050525_update_table_feedbacks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809111456133_unit_data.cs" />
+    <Compile Include="Migrations\201809111456133_unit_data.Designer.cs">
+      <DependentUpon>201809111456133_unit_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Respositories\PermissionRepository.cs" />
     <Compile Include="MyShopDbContext.cs" />
@@ -123,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808261050525_update_table_feedbacks.resx">
       <DependentUpon>201808261050525_update_table_feedbacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111456133_unit_data.resx">
+      <DependentUpon>201809111456133_unit_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

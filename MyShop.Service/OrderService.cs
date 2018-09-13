@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using MyShop.Data.Infrastructure;
 using MyShop.Data.Respositories;
@@ -49,7 +50,7 @@ namespace MyShop.Service
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

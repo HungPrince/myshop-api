@@ -3,7 +3,7 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface ISystemConfigRepository : IRepository<SystemConfig>
+    public interface ISystemConfigRepository : IRespository<SystemConfig>
     {
     }
 

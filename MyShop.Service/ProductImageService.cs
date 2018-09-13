@@ -11,7 +11,7 @@ namespace MyShop.Service
 
         void Delete(int id);
 
-        List<ProductImage> GetAll(int productId);
+        IEnumerable<ProductImage> GetAll(int productId);
 
         void Save();
     }
@@ -37,9 +37,9 @@ namespace MyShop.Service
             _productImageRepository.Delete(id);
         }
 
-        public List<ProductImage> GetAll(int productId)
+        public IEnumerable<ProductImage> GetAll(int productId)
         {
-            return _productImageRepository.GetMulti(x => x.ProductId == productId).ToList();
+            return _productImageRepository.GetMulti(x => x.ProductId == productId);
         }
 
         public void Save()
