@@ -3,13 +3,13 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IFeedbackRepository : IRespository<Feedback>
+    public interface IFeedbackRepository : IRepository<Feedback>
     {
 
     }
 
 
-    public class FeedbackRepository : RespositoryBase<Feedback>, IFeedbackRepository
+    public class FeedbackRepository : RepositoryBase<Feedback>, IFeedbackRepository
     {
         public FeedbackRepository(IDbFactory dbFactory) : base(dbFactory)
         {

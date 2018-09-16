@@ -3,11 +3,9 @@ using MyShop.Model.Models;
 using MyShop.Service;
 using MyShop.WebAPI.App_Start;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -85,7 +83,6 @@ namespace MyShop.WebAPI.Infrastructure.Core
             }
             catch
             {
-
             }
         }
     }

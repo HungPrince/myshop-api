@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IFunctionRepository : IRespository<Function>
+    public interface IFunctionRepository : IRepository<Function>
     {
         List<Function> GetListFunctionWithPermission(string userId);
     }
 
-    public class FunctionRepository : RespositoryBase<Function>, IFunctionRepository
+    public class FunctionRepository : RepositoryBase<Function>, IFunctionRepository
     {
         public FunctionRepository(IDbFactory dbFactory) : base(dbFactory)
         {

@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IPageRepository : IRespository<Page>
+    public interface IPageRepository : IRepository<Page>
     {
     }
 
-    public class PageRepository : RespositoryBase<Page>, IPageRepository
+    public class PageRepository : RepositoryBase<Page>, IPageRepository
     {
         public PageRepository(IDbFactory dbFactory) : base(dbFactory)
         {

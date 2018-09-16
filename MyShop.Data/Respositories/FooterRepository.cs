@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IFooterRepository : IRespository<Footer>
+    public interface IFooterRepository : IRepository<Footer>
     {
     }
 
-    public class FooterRepository : RespositoryBase<Footer>, IFooterRepository
+    public class FooterRepository : RepositoryBase<Footer>, IFooterRepository
     {
         public FooterRepository(IDbFactory dbFactory) : base(dbFactory)
         {

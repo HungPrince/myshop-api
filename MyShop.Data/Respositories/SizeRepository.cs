@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface ISizeRepository : IRespository<Size>
+    public interface ISizeRepository : IRepository<Size>
     {
     }
 
-    public class SizeRepository : RespositoryBase<Size>, ISizeRepository
+    public class SizeRepository : RepositoryBase<Size>, ISizeRepository
     {
         public SizeRepository(IDbFactory dbFactory) : base(dbFactory)
         {

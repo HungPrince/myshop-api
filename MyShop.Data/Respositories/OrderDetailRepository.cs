@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IOrderDetailRepository : IRespository<OrderDetail>
+    public interface IOrderDetailRepository : IRepository<OrderDetail>
     {
     }
 
-    public class OrderDetailRepository : RespositoryBase<OrderDetail>, IOrderDetailRepository
+    public class OrderDetailRepository : RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
         public OrderDetailRepository(IDbFactory dbFactory) : base(dbFactory)
         {

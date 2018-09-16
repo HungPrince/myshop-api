@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IPermissionRepository : IRespository<Permission>
+    public interface IPermissionRepository : IRepository<Permission>
     {
         List<Permission> GetByUserId(string userId);
     }
 
-    public class PermissionRepository : RespositoryBase<Permission>, IPermissionRepository
+    public class PermissionRepository : RepositoryBase<Permission>, IPermissionRepository
     {
         public PermissionRepository(IDbFactory dbFactory) : base(dbFactory)
         {

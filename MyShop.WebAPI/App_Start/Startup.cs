@@ -32,7 +32,7 @@ namespace MyShop.WebAPI.App_Start
         private void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerLifetimeScope();
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
@@ -58,7 +58,7 @@ namespace MyShop.WebAPI.App_Start
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
 
-            Autofac.IContainer container = builder.Build();
+            IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);

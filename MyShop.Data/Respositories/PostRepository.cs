@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IPostRepository : IRespository<Post>
+    public interface IPostRepository : IRepository<Post>
     {
         IEnumerable<Post> GetAllByTag(string tag, int pageIndex, int pageSize, out int totalRow);
     }
 
-    public class PostRepository : RespositoryBase<Post>, IPostRepository
+    public class PostRepository : RepositoryBase<Post>, IPostRepository
     {
         public PostRepository(IDbFactory dbFactory) : base(dbFactory)
         {

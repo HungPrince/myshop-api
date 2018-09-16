@@ -15,9 +15,9 @@ D:\Web\MyShopAPI\MyShop.Data\bin\Debug\EntityFramework.SqlServer.xml
 D:\Web\MyShopAPI\MyShop.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 D:\Web\MyShopAPI\MyShop.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csprojAssemblyReference.cache
+D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.Migrations.update_data.resources
+D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.GenerateResource.cache
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.CoreCompileInputs.cache
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.CopyComplete
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.dll
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.pdb
-D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.Migrations.update_data.resources
-D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.GenerateResource.cache

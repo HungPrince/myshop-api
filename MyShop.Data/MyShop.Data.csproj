@@ -56,9 +56,9 @@
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Infrastructure\IRespository.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\RespositoryBase.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Migrations\201809131218109_update_data.cs" />
     <Compile Include="Migrations\201809131218109_update_data.Designer.cs">
@@ -72,7 +72,7 @@
     <Compile Include="Respositories\AnnouncementUserRepository.cs" />
     <Compile Include="Respositories\ColorRepository.cs" />
     <Compile Include="Respositories\ContactDetailRepository.cs" />
-    <Compile Include="Respositories\ErrorRespository.cs" />
+    <Compile Include="Respositories\ErrorRepository.cs" />
     <Compile Include="Respositories\FeedbackRepository.cs" />
     <Compile Include="Respositories\FooterRepository.cs" />
     <Compile Include="Respositories\FunctionRepository.cs" />

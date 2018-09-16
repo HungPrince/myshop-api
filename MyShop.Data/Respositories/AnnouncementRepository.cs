@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IAnnouncementRepository : IRespository<Announcement>
+    public interface IAnnouncementRepository : IRepository<Announcement>
     {
         IQueryable<Announcement> GetAllUnread(string annoucementId);
     }
 
-    public class AnnouncementRepository : RespositoryBase<Announcement>, IAnnouncementRepository
+    public class AnnouncementRepository : RepositoryBase<Announcement>, IAnnouncementRepository
     {
         public AnnouncementRepository(IDbFactory dbFactory) : base(dbFactory)
         {

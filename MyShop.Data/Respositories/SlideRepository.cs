@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface ISlideRepository : IRespository<Slide>
+    public interface ISlideRepository : IRepository<Slide>
     {
     }
 
-    public class SlideRepository : RespositoryBase<Slide>, ISlideRepository
+    public class SlideRepository : RepositoryBase<Slide>, ISlideRepository
     {
         public SlideRepository(IDbFactory dbFactory) : base(dbFactory)
         {

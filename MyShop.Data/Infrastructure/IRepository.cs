@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MyShop.Data.Infrastructure
 {
-    public interface IRespository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         T Add(T entity);
 

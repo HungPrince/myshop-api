@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IProductRepository : IRespository<Product>
+    public interface IProductRepository : IRepository<Product>
     {
         IEnumerable<Product> GetListProductByTag(string tagID, int page, int pageSize, out int totalRow);
     }
 
-    public class ProductRepository : RespositoryBase<Product>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         public ProductRepository(IDbFactory dbFactory) : base(dbFactory)
         {

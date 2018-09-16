@@ -13,10 +13,10 @@ namespace MyShop.Service
 
     public class ErrorService : IErrorService
     {
-        private IErrorRespository _errorRepository;
+        private IErrorRepository _errorRepository;
         private IUnitOfWork _unitOfWork;
 
-        public ErrorService(IErrorRespository errorRepository, IUnitOfWork unitOfWork)
+        public ErrorService(IErrorRepository errorRepository, IUnitOfWork unitOfWork)
         {
             this._errorRepository = errorRepository;
             this._unitOfWork = unitOfWork;

@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IContactDetailRepository : IRespository<ContactDetail>
+    public interface IContactDetailRepository : IRepository<ContactDetail>
     {
     }
 
-    public class ContactDetailRepository : RespositoryBase<ContactDetail>, IContactDetailRepository
+    public class ContactDetailRepository : RepositoryBase<ContactDetail>, IContactDetailRepository
     {
         public ContactDetailRepository(IDbFactory dbFactory) : base(dbFactory)
         {

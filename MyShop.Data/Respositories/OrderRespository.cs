@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace MyShop.Data.Respositories
 {
-    public interface IOrderRepository : IRespository<Order>
+    public interface IOrderRepository : IRepository<Order>
     {
         IEnumerable<RevenueStatisticViewModel> GetRevenueStatistic(string fromDate, string toDate);
     }
 
-    public class OrderRepository : RespositoryBase<Order>, IOrderRepository
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
         public OrderRepository(IDbFactory dbFactory) : base(dbFactory)
         {

@@ -3,11 +3,11 @@ using MyShop.Model.Models;
 
 namespace MyShop.Data.Respositories
 {
-    public interface ITagRepository : IRespository<Tag>
+    public interface ITagRepository : IRepository<Tag>
     {
     }
 
-    public class TagRepository : RespositoryBase<Tag>, ITagRepository
+    public class TagRepository : RepositoryBase<Tag>, ITagRepository
     {
         public TagRepository(IDbFactory dbFactory) : base(dbFactory)
         {
