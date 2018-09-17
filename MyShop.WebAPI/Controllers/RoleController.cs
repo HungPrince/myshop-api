@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
+using MyShop.Common.Exceptions;
 using MyShop.Model.Models;
 using MyShop.Service;
 using MyShop.WebAPI.Infrastructure.Core;
+using MyShop.WebAPI.Infrastructure.Extentions;
 using MyShop.WebAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -51,6 +55,30 @@ namespace MyShop.WebAPI.Controllers
 
                 return response;
             });
+        }
+
+        [HttpPost]
+        [Route("add")]
+        public HttpResponseMessage Create(HttpRequestMessage request, ApplicationRoleViewModel applicationRoleViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var newRole = new AppRole();
+                newRole.UpdateApplicationRole(applicationRoleViewModel);
+                try
+                {
+                    AppRoleManager.Create(newRole);
+                    return request.CreateResponse(HttpStatusCode.OK, applicationRoleViewModel);
+                }
+                catch (NameDuplicatedException dex)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, dex.Message);
+                }
+            }
+            else
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
         }
     }
 }
