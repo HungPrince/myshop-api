@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace MyShop.WebAPI.Controllers
 {
@@ -27,8 +27,8 @@ namespace MyShop.WebAPI.Controllers
             _permissionService = permissionService;
         }
 
-        [Route("getlistpaging")]
         [HttpGet]
+        [Route("getlistpaging")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return CreateHttpResponse(request, () =>
@@ -68,7 +68,7 @@ namespace MyShop.WebAPI.Controllers
                 try
                 {
                     AppRoleManager.Create(newRole);
-                    return request.CreateResponse(HttpStatusCode.OK, applicationRoleViewModel);
+                    return request.CreateResponse(HttpStatusCode.OK, newRole);
                 }
                 catch (NameDuplicatedException dex)
                 {
@@ -79,6 +79,39 @@ namespace MyShop.WebAPI.Controllers
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
+        }
+
+        [HttpPut]
+        [Route("update")]
+        public HttpResponseMessage Update(HttpRequestMessage request, ApplicationRoleViewModel applicationRoleViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var appRole = AppRoleManager.FindById(applicationRoleViewModel.Id);
+                try
+                {
+                    appRole.UpdateApplicationRole(applicationRoleViewModel, "update");
+                    AppRoleManager.Update(appRole);
+                    return request.CreateResponse(HttpStatusCode.OK, appRole);
+                }
+                catch (NameDuplicatedException dex)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, dex.Message);
+                }
+            }
+            else
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+        }
+
+        [HttpDelete]
+        [Route("delete")]
+        public HttpResponseMessage Delete(HttpRequestMessage request, string id)
+        {
+            var role = AppRoleManager.FindById(id);
+            AppRoleManager.Delete(role);
+            return request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }
