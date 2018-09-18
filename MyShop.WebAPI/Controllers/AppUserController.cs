@@ -16,8 +16,8 @@ using System.Web.Http;
 
 namespace MyShop.WebAPI.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/appUser")]
+    //[Authorize]
+    [RoutePrefix("api/user")]
     public class AppUserController : ApiControllerBase
     {
         public AppUserController(IErrorService errorService) : base(errorService)
@@ -27,7 +27,7 @@ namespace MyShop.WebAPI.Controllers
 
         [Route("getlistpaging")]
         [HttpGet]
-        [Permission(Action = "Read", Function = "USER")]
+        //[Permission(Action = "Read", Function = "USER")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return CreateHttpResponse(request, () =>
@@ -38,32 +38,32 @@ namespace MyShop.WebAPI.Controllers
                  if (!string.IsNullOrWhiteSpace(filter))
                  {
                      model = model.Where(x => x.UserName.Contains(filter) || x.FullName.Contains(filter));
-                     totalRow = model.Count();
-                     var data = model.OrderBy(x => x.UserName).Skip((page - 1) * pageSize).Take(pageSize);
-                     IEnumerable<AppUserViewModel> modelVm = Mapper.Map<IEnumerable<AppUser>, IEnumerable<AppUserViewModel>>(data);
-                     PaginationSet<AppUserViewModel> pagedSet = new PaginationSet<AppUserViewModel>()
-                     {
-                         PageIndex = page,
-                         PageSize = pageSize,
-                         TotalRows = totalRow,
-                         Items = modelVm
-                     };
-                     response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
                  }
+                 totalRow = model.Count();
+                 var data = model.OrderBy(x => x.UserName).Skip((page - 1) * pageSize).Take(pageSize);
+                 IEnumerable<AppUserViewModel> modelVm = Mapper.Map<IEnumerable<AppUser>, IEnumerable<AppUserViewModel>>(data);
+                 PaginationSet<AppUserViewModel> pagedSet = new PaginationSet<AppUserViewModel>()
+                 {
+                     PageIndex = page,
+                     PageSize = pageSize,
+                     TotalRows = totalRow,
+                     Items = modelVm
+                 };
+                 response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
                  return response;
              });
         }
         [Route("detail/{id}")]
         [HttpGet]
-        [Permission(Action="Read", Function ="USER")]
-        public  async Task<HttpResponseMessage> Details(HttpRequestMessage request, string id)
+        [Permission(Action = "Read", Function = "USER")]
+        public async Task<HttpResponseMessage> Details(HttpRequestMessage request, string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, nameof(id) + " Not found");
             }
             var user = await AppUserManager.FindByIdAsync(id);
-            if(user == null)
+            if (user == null)
             {
                 return request.CreateErrorResponse(HttpStatusCode.NoContent, "Not data");
             }
@@ -78,8 +78,8 @@ namespace MyShop.WebAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        [Permission(Action="Create", Function ="USER")]
-        public async Task<HttpResponseMessage> Create (HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
+        [Permission(Action = "Create", Function = "USER")]
+        public async Task<HttpResponseMessage> Create(HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
         {
             if (!ModelState.IsValid)
             {

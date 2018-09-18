@@ -6,7 +6,6 @@ using MyShop.Service;
 using MyShop.WebAPI.Infrastructure.Core;
 using MyShop.WebAPI.Infrastructure.Extentions;
 using MyShop.WebAPI.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyShop.Model.Models;
 using MyShop.WebAPI.Models;
+using MyShop.WebAPI.Models.System;
 
 namespace MyShop.WebAPI.Mappings
 {
@@ -11,6 +12,7 @@ namespace MyShop.WebAPI.Mappings
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Permission, PermissionViewModel>();
+                cfg.CreateMap<AppUser, AppUserViewModel>();
             });
         }
     }
