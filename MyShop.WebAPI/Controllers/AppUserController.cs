@@ -78,10 +78,10 @@ namespace MyShop.WebAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        [Permission(Action = "Create", Function = "USER")]
+        //[Permission(Action = "Create", Function = "USER")]
         public async Task<HttpResponseMessage> Create(HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var newAppUser = new AppUser();
                 newAppUser.UpdateUser(applicationUserViewModel);

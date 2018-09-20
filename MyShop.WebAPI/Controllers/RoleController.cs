@@ -33,24 +33,33 @@ namespace MyShop.WebAPI.Controllers
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                int totalRow = 0;
                 var query = AppRoleManager.Roles;
-                if (!string.IsNullOrEmpty(filter))
+                if (page == 0)
                 {
-                    query = query.Where(x => x.Description.Contains(filter));
+                    var model = query.OrderBy(x => x.Name);
+                    IEnumerable<ApplicationRoleViewModel> modelVm = Mapper.Map<IEnumerable<AppRole>, IEnumerable<ApplicationRoleViewModel>>(model);
+                    response = request.CreateResponse(HttpStatusCode.OK, modelVm);
                 }
-                totalRow = query.Count();
-                var model = query.OrderBy(x => x.Name).Skip((page - 1) * pageSize).Take(pageSize);
-                IEnumerable<ApplicationRoleViewModel> modelVm = Mapper.Map<IEnumerable<AppRole>, IEnumerable<ApplicationRoleViewModel>>(model);
-
-                PaginationSet<ApplicationRoleViewModel> pagedSet = new PaginationSet<ApplicationRoleViewModel>()
+                else
                 {
-                    PageIndex = page,
-                    TotalRows = totalRow,
-                    PageSize = pageSize,
-                    Items = modelVm
-                };
-                response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
+                    int totalRow = 0;
+                    if (!string.IsNullOrEmpty(filter))
+                    {
+                        query = query.Where(x => x.Description.Contains(filter));
+                    }
+                    totalRow = query.Count();
+                    var model = query.OrderBy(x => x.Name).Skip((page - 1) * pageSize).Take(pageSize);
+                    IEnumerable<ApplicationRoleViewModel> modelVm = Mapper.Map<IEnumerable<AppRole>, IEnumerable<ApplicationRoleViewModel>>(model);
+
+                    PaginationSet<ApplicationRoleViewModel> pagedSet = new PaginationSet<ApplicationRoleViewModel>()
+                    {
+                        PageIndex = page,
+                        TotalRows = totalRow,
+                        PageSize = pageSize,
+                        Items = modelVm
+                    };
+                    response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
+                }
 
                 return response;
             });
