@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace MyShop.WebAPI.Controllers
 {
+    [RoutePrefix("api/upload")]
     public class UploadController : ApiControllerBase
     {
         public UploadController(IErrorService errorService) : base(errorService)
@@ -32,7 +33,7 @@ namespace MyShop.WebAPI.Controllers
                     if (postFile != null && postFile.ContentLength > 0)
                     {
                         int maxContentLength = int.Parse(ConfigurationManager.AppSettings["MaxSizeUpload"]);
-                        IList<string> lstAllowedFileExtentions = new List<string> { ".jpg", ".gif", ".png" };
+                        IList<string> lstAllowedFileExtentions = new List<string> { ".jpg", ".gif", ".png", ".jpeg" };
                         string extention = postFile.FileName.Substring(postFile.FileName.LastIndexOf('.')).ToLower();
                         if (!lstAllowedFileExtentions.Contains(extention))
                         {
@@ -80,12 +81,11 @@ namespace MyShop.WebAPI.Controllers
                             {
                                 Directory.CreateDirectory(directoryVitual);
                             }
-
-                            string path = Path.Combine(directoryVitual, postFile.FileName);
+                            string fileName = Helpers.Helper.RandomString() + postFile.FileName;
+                            string path = Path.Combine(directoryVitual, fileName);
                             postFile.SaveAs(path);
-                            return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, postFile.FileName));
+                            return Request.CreateResponse(HttpStatusCode.OK, Path.Combine(directory, fileName));
                         }
-
                     }
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Image Updated Successfully.");
                 }
