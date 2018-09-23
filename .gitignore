@@ -239,3 +239,4 @@ TeduShop.Web/UploadedFiles/
 /TeduShop.WebAPI/UploadedFiles/Avatars
 /TeduShop.WebAPI/UploadedFiles/Products
 /TeduShop.WebAPI/Reports
+/TeduShop.WebAPI/ConnectionStrings.config
