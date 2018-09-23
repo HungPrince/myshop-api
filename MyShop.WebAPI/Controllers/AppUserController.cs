@@ -55,7 +55,7 @@ namespace MyShop.WebAPI.Controllers
         }
         [Route("detail/{id}")]
         [HttpGet]
-        [Permission(Action = "Read", Function = "USER")]
+        //[Permission(Action = "Read", Function = "USER")]
         public async Task<HttpResponseMessage> Details(HttpRequestMessage request, string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -94,7 +94,7 @@ namespace MyShop.WebAPI.Controllers
                         var roles = applicationUserViewModel.Roles.ToArray();
                         await AppUserManager.AddToRolesAsync(newAppUser.Id, roles);
 
-                        return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
+                        return request.CreateResponse(HttpStatusCode.OK, newAppUser);
                     }
                     else
                     {
@@ -119,10 +119,10 @@ namespace MyShop.WebAPI.Controllers
         [HttpPut]
         [Route("update")]
         //[Authorize(Roles = "UpdateUser")]
-        [Permission(Action = "Update", Function = "USER")]
+        //[Permission(Action = "Update", Function = "USER")]
         public async Task<HttpResponseMessage> Update(HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
         {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
                 var appUser = await AppUserManager.FindByIdAsync(applicationUserViewModel.Id);
                 try
@@ -155,7 +155,7 @@ namespace MyShop.WebAPI.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        [Permission(Action = "Delete", Function = "USER")]
+        //[Permission(Action = "Delete", Function = "USER")]
         //[Authorize(Roles ="DeleteUser")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, string id)
         {

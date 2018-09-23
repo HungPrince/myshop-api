@@ -114,17 +114,17 @@
                 var user = new AppUser()
                 {
                     UserName = "admin",
-                    Email = "admin@tedu.com.vn",
+                    Email = "admin@thoitrangsinhvien.com.vn",
                     EmailConfirmed = true,
                     BirthDay = DateTime.Now,
-                    FullName = "Bach Ngoc Toan",
+                    FullName = "HungPrince",
                     Avatar = "/assets/images/img.jpg",
                     Gender = true,
                     Status = true
                 };
                 if (manager.Users.Count(x => x.UserName == "admin") == 0)
                 {
-                    manager.Create(user, "123654$");
+                    manager.Create(user, "123456@Abc");
 
                     if (!roleManager.Roles.Any())
                     {
@@ -275,12 +275,12 @@
                     var contactDetail = new ContactDetail()
                     {
                         Name = "Shop thời trang TEDU",
-                        Address = "Ngõ 77 Xuân La",
-                        Email = "tedu@gmail.com",
+                        Address = "Ngõ 123 trần cung",
+                        Email = "buihung160894@gmail.com",
                         Lat = 21.0633645,
                         Lng = 105.8053274,
-                        Phone = "095423233",
-                        Website = "http://tedu.com.vn",
+                        Phone = "0967680605",
+                        Website = "http://thoitrangsinhvien.com.vn",
                         Other = "",
                         Status = true
                     };

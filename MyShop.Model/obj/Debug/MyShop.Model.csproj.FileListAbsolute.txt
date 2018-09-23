@@ -13,3 +13,4 @@ D:\Web\MyShopAPI\MyShop.Model\obj\Debug\MyShop.Model.csproj.CoreCompileInputs.ca
 D:\Web\MyShopAPI\MyShop.Model\obj\Debug\MyShop.Model.csproj.CopyComplete
 D:\Web\MyShopAPI\MyShop.Model\obj\Debug\MyShop.Model.dll
 D:\Web\MyShopAPI\MyShop.Model\obj\Debug\MyShop.Model.pdb
+D:\Web\MyShopAPI\MyShop.Model\obj\Debug\MyShop.Model.csprojAssemblyReference.cache

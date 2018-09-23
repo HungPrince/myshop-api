@@ -7,13 +7,13 @@ namespace MyShop.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class update_data : IMigrationMetadata
+    public sealed partial class init_data : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update_data));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init_data));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809131218109_update_data"; }
+            get { return "201809220855187_init_data"; }
         }
         
         string IMigrationMetadata.Source
