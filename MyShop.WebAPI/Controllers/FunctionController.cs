@@ -98,10 +98,6 @@ namespace MyShop.WebAPI.Controllers
                     }
                     else
                     {
-                        if (functionViewModel.ParentId == "")
-                        {
-                            functionViewModel.ParentId = null;
-                        }
                         newFunction.UpdateFunction(functionViewModel);
                         _functionService.Create(newFunction);
                         _functionService.Save();

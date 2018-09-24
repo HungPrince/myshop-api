@@ -4,3 +4,9 @@ D:\Web\MyShopAPI\MyShop.Common\obj\Debug\MyShop.Common.csprojAssemblyReference.c
 D:\Web\MyShopAPI\MyShop.Common\obj\Debug\MyShop.Common.csproj.CoreCompileInputs.cache
 D:\Web\MyShopAPI\MyShop.Common\obj\Debug\MyShop.Common.dll
 D:\Web\MyShopAPI\MyShop.Common\obj\Debug\MyShop.Common.pdb
+F:\Hung\web\myshop-api\MyShop.Common\bin\Debug\MyShop.Common.dll
+F:\Hung\web\myshop-api\MyShop.Common\bin\Debug\MyShop.Common.pdb
+F:\Hung\web\myshop-api\MyShop.Common\obj\Debug\MyShop.Common.csprojResolveAssemblyReference.cache
+F:\Hung\web\myshop-api\MyShop.Common\obj\Debug\MyShop.Common.csproj.CoreCompileInputs.cache
+F:\Hung\web\myshop-api\MyShop.Common\obj\Debug\MyShop.Common.dll
+F:\Hung\web\myshop-api\MyShop.Common\obj\Debug\MyShop.Common.pdb

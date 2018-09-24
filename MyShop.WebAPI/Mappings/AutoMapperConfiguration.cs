@@ -14,6 +14,7 @@ namespace MyShop.WebAPI.Mappings
                 cfg.CreateMap<Permission, PermissionViewModel>();
                 cfg.CreateMap<AppUser, AppUserViewModel>();
                 cfg.CreateMap<Function, FunctionViewModel>();
+                cfg.CreateMap<ProductCategory, ProductCategoryViewModel>();
             });
         }
     }

@@ -303,3 +303,5 @@ D:\Web\MyShopAPI\MyShop.WebAPI\obj\Debug\MyShop.WebAPI.csproj.CoreCompileInputs.
 D:\Web\MyShopAPI\MyShop.WebAPI\obj\Debug\MyShop.WebAPI.csproj.CopyComplete
 D:\Web\MyShopAPI\MyShop.WebAPI\obj\Debug\MyShop.WebAPI.dll
 D:\Web\MyShopAPI\MyShop.WebAPI\obj\Debug\MyShop.WebAPI.pdb
+F:\Hung\web\myshop-api\MyShop.WebAPI\bin\Vse.Web.Serialization.dll
+F:\Hung\web\myshop-api\MyShop.WebAPI\bin\Vse.Web.Serialization.pdb
