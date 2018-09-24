@@ -38,8 +38,6 @@ D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.CoreCompileInputs.cach
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.CopyComplete
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.dll
 D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.pdb
-D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.Migrations.init_data.resources
-D:\Web\MyShopAPI\MyShop.Data\obj\Debug\MyShop.Data.csproj.GenerateResource.cache
 F:\Hung\web\myshop-api\MyShop.Data\obj\Debug\MyShop.Data.csprojResolveAssemblyReference.cache
 F:\Hung\web\myshop-api\MyShop.Data\obj\Debug\MyShop.Data.Migrations.init_data.resources
 F:\Hung\web\myshop-api\MyShop.Data\obj\Debug\MyShop.Data.csproj.GenerateResource.Cache

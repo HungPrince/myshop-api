@@ -276,6 +276,7 @@
     <Compile Include="Infrastructure\Extentions\EntityExtentions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\Common\TagViewModel.cs" />
+    <Compile Include="Models\DataContracts\SavePermissionRequest.cs" />
     <Compile Include="Models\Post\PostCategoryViewModel.cs" />
     <Compile Include="Models\Post\PostTagViewModel.cs" />
     <Compile Include="Models\Post\PostViewModel.cs" />

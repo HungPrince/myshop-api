@@ -6,6 +6,8 @@ using MyShop.Service;
 using MyShop.WebAPI.Infrastructure.Core;
 using MyShop.WebAPI.Infrastructure.Extentions;
 using MyShop.WebAPI.Models;
+using MyShop.WebAPI.Models.DataContracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -120,6 +122,116 @@ namespace MyShop.WebAPI.Controllers
             var role = AppRoleManager.FindById(id);
             AppRoleManager.Delete(role);
             return request.CreateResponse(HttpStatusCode.OK, id);
+        }
+
+        [HttpGet]
+        [Route("getAllPermission")]
+        public HttpResponseMessage GetAllPermission(HttpRequestMessage request, string functionId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                List<PermissionViewModel> permissions = new List<PermissionViewModel>();
+                HttpResponseMessage response = null;
+                var roles = AppRoleManager.Roles.Where(x => x.Name != "Admin").ToList();
+                var listPermission = _permissionService.GetByFunctionId(functionId).ToList();
+                if (listPermission.Count == 0)
+                {
+                    foreach (var item in roles)
+                    {
+                        permissions.Add(new PermissionViewModel()
+                        {
+                            RoleId = item.Id,
+                            CanCreate = false,
+                            CanUpdate = false,
+                            CanRead = false,
+                            CanDelete = false,
+                            AppRole = new ApplicationRoleViewModel()
+                            {
+                                Id = item.Id,
+                                Description = item.Description,
+                                Name = item.Name
+                            }
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (var item in roles)
+                    {
+                        if(!listPermission.Any(x=>x.RoleId == item.Id))
+                        {
+                            permissions.Add(new PermissionViewModel()
+                            {
+                                RoleId = item.Id,
+                                CanCreate = false,
+                                CanUpdate = false,
+                                CanRead = false,
+                                CanDelete = false,
+                                AppRole = new ApplicationRoleViewModel()
+                                {
+                                    Id = item.Id,
+                                    Description = item.Description,
+                                    Name = item.Name
+                                }
+                            });
+                        }
+                        permissions = Mapper.Map<List<Permission>, List<PermissionViewModel>>(listPermission);
+                    }
+                }
+                response = request.CreateResponse(HttpStatusCode.OK, permissions);
+                return response;
+            });
+            
+        }
+
+        [HttpPost]
+        [Route("savePermission")]
+        public HttpResponseMessage SavePermisssion(HttpRequestMessage request, SavePermissionRequest data)
+        {
+            if (ModelState.IsValid)
+            {
+                _permissionService.DeleteAll(data.FunctionId);
+                Permission permission = null;
+                foreach (var item in data.Permissions)
+                {
+                    permission = new Permission();
+                    permission.UpdatePermission(item);
+                    permission.FunctionId = data.FunctionId;
+                    _permissionService.Add(permission);
+                }
+                var functions = _functionService.GetAllWithParentID(data.FunctionId);
+                if (functions.Any())
+                {
+                    foreach (var item in functions)
+                    {
+                        _permissionService.DeleteAll(item.ID);
+                        foreach (var p in data.Permissions)
+                        {
+                            var childPermission = new Permission();
+                            childPermission.FunctionId = item.ID;
+                            childPermission.RoleId = p.RoleId;
+                            childPermission.CanRead = p.CanRead;
+                            childPermission.CanUpdate = p.CanUpdate;
+                            childPermission.CanDelete = p.CanDelete;
+                            childPermission.CanCreate = p.CanCreate;
+                            _permissionService.Add(childPermission);
+                        }
+                    }
+                }
+                try
+                {
+                    _permissionService.SaveChange();
+                    return request.CreateResponse(HttpStatusCode.OK, "Lưu quyền thành công");
+                }
+                catch(Exception ex)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+            }
+            else
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
         }
     }
 }

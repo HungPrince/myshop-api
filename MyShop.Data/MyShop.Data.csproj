@@ -60,10 +60,6 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201809240925238_init_data.cs" />
-    <Compile Include="Migrations\201809240925238_init_data.Designer.cs">
-      <DependentUpon>201809240925238_init_data.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Respositories\PermissionRepository.cs" />
     <Compile Include="MyShopDbContext.cs" />
@@ -112,11 +108,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809240925238_init_data.resx">
-      <DependentUpon>201809240925238_init_data.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
