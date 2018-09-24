@@ -234,12 +234,11 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
-TeduShop.Web/UploadedFiles/
-/MyShop.Web/Reports
+/MyShop.WebAPI/UploadedFiles/
+/MyShop.WebAPI/Reports
 /MyShop.WebAPI/UploadedFiles/Avatars
 /MyShop.WebAPI/UploadedFiles/Products
 /MyShop.WebAPI/Reports
 /MyShop.WebAPI/ConnectionStrings.config
 /MyShop.Data/Migrations
 /MyShop.Data/App.config
- MyShop.WebAPI/ConnectionStrings.config
