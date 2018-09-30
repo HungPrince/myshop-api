@@ -16,7 +16,7 @@ using System.Web.Http;
 
 namespace MyShop.WebAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/user")]
     public class AppUserController : ApiControllerBase
     {
@@ -27,7 +27,7 @@ namespace MyShop.WebAPI.Controllers
 
         [Route("getlistpaging")]
         [HttpGet]
-        //[Permission(Action = "Read", Function = "USER")]
+        [Permission(Action = "Read", Function = "USER")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return CreateHttpResponse(request, () =>
@@ -55,7 +55,7 @@ namespace MyShop.WebAPI.Controllers
         }
         [Route("detail/{id}")]
         [HttpGet]
-        //[Permission(Action = "Read", Function = "USER")]
+        [Permission(Action = "Read", Function = "USER")]
         public async Task<HttpResponseMessage> Details(HttpRequestMessage request, string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -78,7 +78,7 @@ namespace MyShop.WebAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        //[Permission(Action = "Create", Function = "USER")]
+        [Permission(Action = "Create", Function = "USER")]
         public async Task<HttpResponseMessage> Create(HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
         {
             if (ModelState.IsValid)
@@ -119,7 +119,7 @@ namespace MyShop.WebAPI.Controllers
         [HttpPut]
         [Route("update")]
         //[Authorize(Roles = "UpdateUser")]
-        //[Permission(Action = "Update", Function = "USER")]
+        [Permission(Action = "Update", Function = "USER")]
         public async Task<HttpResponseMessage> Update(HttpRequestMessage request, AppUserViewModel applicationUserViewModel)
         {
                 if (ModelState.IsValid)
@@ -137,6 +137,7 @@ namespace MyShop.WebAPI.Controllers
                         selectedRole = selectedRole ?? new string[] { };
 
                         await AppUserManager.AddToRolesAsync(appUser.Id, selectedRole.Except(userRoles).ToArray());
+                        await AppUserManager.RemoveFromRolesAsync(appUser.Id, userRoles.Except(selectedRole).ToArray());
                         return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
                     }
                     else
@@ -155,7 +156,7 @@ namespace MyShop.WebAPI.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        //[Permission(Action = "Delete", Function = "USER")]
+        [Permission(Action = "Delete", Function = "USER")]
         //[Authorize(Roles ="DeleteUser")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, string id)
         {

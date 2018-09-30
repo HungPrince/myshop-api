@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace MyShop.WebAPI.Models
 {
@@ -25,7 +22,6 @@ namespace MyShop.WebAPI.Models
         public FunctionViewModel Parent { set; get; }
 
         public ICollection<FunctionViewModel> ChildFunctions { set; get; }
-
 
         public bool Status { set; get; }
 

@@ -5,6 +5,7 @@ using MyShop.Service;
 using MyShop.WebAPI.Infrastructure.Core;
 using MyShop.WebAPI.Infrastructure.Extentions;
 using MyShop.WebAPI.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Web.Http;
 
 namespace MyShop.WebAPI.Controllers
 {
+    //[Authorize]
     [RoutePrefix("api/function")]
     public class FunctionController : ApiControllerBase
     {
@@ -41,13 +43,18 @@ namespace MyShop.WebAPI.Controllers
                     model = _functionService.GetAllWithPermission(User.Identity.GetUserId());
                 }
 
-                IEnumerable<FunctionViewModel> modelVM = Mapper.Map<IEnumerable<Function>, IEnumerable<FunctionViewModel>>(model);
-                var parents = modelVM.Where(x => x.Parent == null);
+                IEnumerable<FunctionViewModel> modelVm = Mapper.Map<IEnumerable<Function>, IEnumerable<FunctionViewModel>>(model);
+                var parents = modelVm.Where(x => x.Parent == null);
                 foreach (var parent in parents)
                 {
-                    parent.ChildFunctions = modelVM.Where(x => x.ParentId == parent.ID).ToList();
+                    parent.ChildFunctions = modelVm.Where(x => x.ParentId == parent.ID).ToList();
                 }
-                response = request.CreateResponse(HttpStatusCode.OK, parents);
+                response = request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(parents, Formatting.None,
+                        new JsonSerializerSettings()
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        }));
+
                 return response;
             });
         }
