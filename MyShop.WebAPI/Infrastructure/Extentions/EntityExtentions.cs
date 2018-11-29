@@ -81,5 +81,46 @@ namespace MyShop.WebAPI.Infrastructure.Extentions
             productCategory.Status = productCategoryVm.Status;
         }
 
+        public static void UpdateProduct(this Product product, ProductViewModel productVm)
+        {
+            product.ID = productVm.ID;
+            product.Name = productVm.Name;
+            product.Description = productVm.Description;
+            product.Alias = productVm.Alias;
+            product.CategoryID = productVm.CategoryID;
+            product.Content = productVm.Content;
+            product.ThumbnailImage = productVm.ThumbnailImage;
+            product.Price = productVm.Price;
+            product.PromotionPrice = productVm.PromotionPrice;
+            product.Warranty = productVm.Warranty;
+            product.HomeFlag = productVm.HomeFlag;
+            product.HotFlag = productVm.HotFlag;
+            product.ViewCount = productVm.ViewCount;
+
+            product.CreatedDate = productVm.CreatedDate;
+            product.CreatedBy = productVm.CreatedBy;
+            product.UpdatedDate = productVm.UpdatedDate;
+            product.UpdatedBy = productVm.UpdatedBy;
+            product.MetaKeyword = productVm.MetaKeyword;
+            product.MetaDescription = productVm.MetaDescription;
+            product.Status = productVm.Status;
+            product.Tags = productVm.Tags;
+            product.OriginalPrice = productVm.OriginalPrice;
+        }
+
+        public static void UpdateProductImage(this ProductImage image, ProductImageViewModel imageVm)
+        {
+            image.ProductId = imageVm.ProductId;
+            image.Path = imageVm.Path;
+            image.Caption = imageVm.Caption;
+        }
+
+        public static void UpdateProductQuantity(this ProductQuantity quantity, ProductQuantityViewModel quantityVm)
+        {
+            quantity.ColorId = quantityVm.ColorId;
+            quantity.ProductId = quantityVm.ProductId;
+            quantity.SizeId = quantityVm.SizeId;
+            quantity.Quantity = quantityVm.Quantity;
+        }
     }
 }
